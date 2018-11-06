@@ -1,0 +1,35 @@
+<!--
+  Generated template for the PalestrantesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Palestrantes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Pesquisar"></ion-searchbar>
+  <ion-list>
+    <ion-item (click)="getPalestrante(item)" *ngFor="let item of items" class="list-palestrantes">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <img src="../../assets/imgs/user.svg" width="40px">
+          </ion-col>
+          <ion-col col-9 class="list-palestrante">
+            {{ item.nome }}
+          </ion-col>
+          <ion-col col-1 class="list-palestrante-arrow">
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>
