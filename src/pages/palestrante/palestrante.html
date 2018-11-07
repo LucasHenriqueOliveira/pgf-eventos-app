@@ -24,28 +24,30 @@
         <span> {{ nome }} </span>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col col-12>
-        <span> Mini-currículo</span> <br/>
+    <ion-row *ngIf="sobre">
+      <ion-col class="about" col-12>
+        <b> Mini-currículo</b>
+        <br/><hr class="hr-white"><br/>
         <span> {{ sobre }} </span>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col col-12>
+      <ion-col class="text-evento" col-12>
         <span> Eventos</span>
+        <br /><hr class="hr-black">
       </ion-col>
-      <ion-col col-12>
+      <ion-col class="list-eventos" col-12>
         <ion-list>
           <ion-item *ngFor="let item of programacao" class="list-programacao" text-wrap>
             <ion-grid>
               <ion-row>
-                <ion-col col-10>
-                  <h5>{{ item.hora_inicio }} até {{ item.hora_fim }}</h5>
+                <ion-col class="evento" (click)="getProgramacao(item)" col-10>
+                  <h5>{{ item.dia }} - {{ item.hora_inicio }} até {{ item.hora_fim }}</h5>
                   <h3>
                       {{ item.tipo }}: {{ item.titulo }}
                   </h3>
-                  <span>{{ item.local }}</span>
+                  <h6>{{ item.local }}</h6>
                 </ion-col>
                 <ion-col col-2>
                   <button ion-button icon-only clear (click)="favorito(item)">
