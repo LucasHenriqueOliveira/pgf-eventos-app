@@ -77,4 +77,8 @@ export class ProgramacaoPage {
         break;
     }
   }
+
+  getProgramacao(programacao) {
+    console.log(programacao);
+  }
 }

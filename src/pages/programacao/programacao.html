@@ -32,16 +32,16 @@
 <ion-content>
   <ion-list>
     <div *ngFor="let item of arrItems">
-      <ion-label>{{ item.data }}</ion-label>
+      <ion-label class="date">{{ item.data }}</ion-label>
       <ion-item *ngFor="let programacao of item.programacao" class="list-programacao" text-wrap>
         <ion-grid>
           <ion-row>
-            <ion-col col-10>
+            <ion-col (click)="getProgramacao(programacao)" col-10>
               <h5>{{ programacao.hora_inicio }} até {{ programacao.hora_fim }}</h5>
               <h3>
                   {{ programacao.tipo }}: {{ programacao.titulo }}
               </h3>
-              <span>{{ programacao.local }}</span>
+              <h6>{{ programacao.local }}</h6>
             </ion-col>
             <ion-col col-2>
               <button ion-button icon-only clear (click)="favorito(programacao)">

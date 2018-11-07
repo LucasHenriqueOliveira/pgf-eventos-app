@@ -1,3 +1,50 @@
 page-programacao {
+    ion-list {
+        background-color: #e4e2e2;
+        margin-bottom: 0;
+    }
 
+    .date {
+        padding-left: 15px;
+        margin-bottom: 5px;
+        font-size: 11px;
+        color: #757373;
+        margin-top: 20px;
+    }
+
+    .scroll-content {
+        background-color: #e4e2e2;
+    }
+
+    .segment-md-secondary .segment-button.activated, 
+    .segment-md-secondary .segment-button.segment-activated {
+        border-color: #042C41 !important;
+        color: #042C41 !important;
+    }
+
+    .segment-md-secondary .segment-button {
+        color: #042C41 !important;
+    }
+
+    .segment-ios-secondary .segment-button {
+        border-color: #042C41 !important;
+        color: #042C41 !important;
+    }
+
+    .segment-ios-secondary .segment-button.segment-activated {
+        color: #fff !important;
+        background-color: #042C41 !important;
+    }
+
+    button {
+        color: #042C41 !important;
+    }
+
+    h5, h6 {
+        font-style: italic;
+    }
+
+    h3 {
+        font-weight: 700 !important;
+    }
 }
