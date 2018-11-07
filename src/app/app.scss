@@ -14,3 +14,113 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.list-programacao, .list-palestrantes {
+    padding-left: 0;
+}
+
+.list-palestrantes {
+    height: 60px;
+}
+
+.list-palestrante {
+    padding-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-palestrante-arrow {
+    padding-top: 15px;
+    text-align: right;
+}
+
+.list-palestrante-arrow ion-icon {
+    color: gray;
+}
+
+.version {
+    font-size: 8px;
+}
+
+.menu {
+    background: #042C41;
+}
+
+.menu-header {
+    background: #042C41;
+    padding: 50px 20px 0;
+    margin-bottom: 70px;
+}
+
+.menu-header h1 {
+    color: #FFF;
+    font-weight: 300;
+    font-size: 18pt;
+}
+
+.list-menu {
+    position: relative;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0;
+    margin-bottom: 20px;
+    border: none
+}
+
+.list-menu:last-child {
+    margin-bottom: 0
+}
+
+.list-menu .item,
+.list-menu .item-content {
+    background: #042C41;
+    border: none
+}
+
+.list-menu .item,
+.list-menu a.item-content {
+    color: #FFF;
+    font-size: 13pt;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.item-block:first-child {
+    border-top: none !important;
+}
+
+.item-block:last-child {
+    border-bottom: none !important;
+}
+
+.clearfix:after,
+.clearfix:before {
+    display: table;
+    content: "";
+    line-height: 0
+}
+
+.clearfix:after {
+    clear: both
+}
+
+.pull-right {
+    float: right
+}
+
+.pull-left {
+    float: left
+}
+
+.toolbar-ios {
+    padding-bottom: 0 !important;
+    padding-top: 15px !important;
+}
+
+.title-ios {
+    padding-top: 20px !important;
+}
+
+.toolbar-md {
+    padding-bottom: 0 !important;
+}

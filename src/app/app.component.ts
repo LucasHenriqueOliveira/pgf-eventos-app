@@ -4,7 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { ProgramacaoPage } from '../pages/programacao/programacao';
+import { PalestrantesPage } from '../pages/palestrantes/palestrantes';
+import { InscricaoPage } from '../pages/inscricao/inscricao';
+import { VotacaoPage } from '../pages/votacao/votacao';
+import { AppVersion } from '@ionic-native/app-version';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,18 +17,17 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
+  version: string;
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private appVersion: AppVersion) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
-    ];
-
+    if(this.platform.is('cordova')) {
+      this.appVersion.getVersionNumber().then((version) => {
+        this.version = version;
+      });
+    } else {
+      this.version = '1.0.0';
+    }
   }
 
   initializeApp() {
@@ -37,8 +40,19 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
-  }
+		switch (page) {
+			case 'programacao':
+				this.nav.push(ProgramacaoPage);
+				break;
+			case 'palestrantes':
+				this.nav.push(PalestrantesPage);
+				break;
+			case 'inscricao':
+				this.nav.push(InscricaoPage);
+        break;
+      case 'votacao':
+				this.nav.push(VotacaoPage);
+				break;
+		}
+	}
 }
