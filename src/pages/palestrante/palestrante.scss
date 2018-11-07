@@ -1,3 +1,49 @@
 page-palestrante {
+    button {
+        color: #042C41 !important;
+    }
 
+    .grid {
+        padding: 0;
+    }
+
+    .about {
+        background-color: #042C41;
+        padding: 15px;
+        color: #d3d3d3;
+    }
+
+    .hr-white {
+        background-color: #d3d3d3 !important;
+    }
+
+    .hr-black {
+        background-color: #949393 !important;
+        height: 1px !important;
+    }
+
+    .text-evento {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+
+    .list-eventos {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+    }
+
+    .evento {
+        padding-left: 15px;
+    }
+
+    h5, h6 {
+        font-style: italic;
+    }
+
+    h3 {
+        font-weight: 700 !important;
+    }
 }

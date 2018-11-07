@@ -50,4 +50,8 @@ export class PalestrantePage {
   favorito(programacao) {
 
   }
+
+  getProgramacao(programacao) {
+
+  }
 }
