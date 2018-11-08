@@ -36,12 +36,14 @@
       <ion-item *ngFor="let programacao of item.programacao" class="list-programacao" text-wrap>
         <ion-grid>
           <ion-row>
-            <ion-col (click)="getProgramacao(programacao)" col-10>
-              <h5>{{ programacao.hora_inicio }} até {{ programacao.hora_fim }}</h5>
-              <h3>
-                  {{ programacao.tipo }}: {{ programacao.titulo }}
-              </h3>
-              <h6>{{ programacao.local }}</h6>
+            <ion-col col-10>
+              <div (click)="getEvento(programacao)">
+                <h5>{{ programacao.hora_inicio }} até {{ programacao.hora_fim }}</h5>
+                <h3>
+                    {{ programacao.tipo }}: {{ programacao.titulo }}
+                </h3>
+                <h6>{{ programacao.local }}</h6>
+              </div>
             </ion-col>
             <ion-col col-2>
               <button ion-button icon-only clear (click)="favorito(programacao)">

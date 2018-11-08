@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
+import { EventoPage } from '../evento/evento';
 
 /**
  * Generated class for the ProgramacaoPage page.
@@ -78,7 +79,11 @@ export class ProgramacaoPage {
     }
   }
 
-  getProgramacao(programacao) {
+  favorito(programacao) {
     console.log(programacao);
+  }
+
+  getEvento(programacao) {
+    this.navCtrl.push(EventoPage, {id: programacao.id});
   }
 }
