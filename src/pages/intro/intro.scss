@@ -1,0 +1,53 @@
+page-intro {
+    .intro {
+        background-color: #042C41;
+    }
+    .intro h1 {
+        color: #fff;
+        font-size: 20pt;
+        font-weight: 200;
+        margin: 10px 0 0 0;
+    }
+    .intro h2 {
+        color: #fff;
+        font-size: 12pt;
+        letter-spacing: 1px;
+        font-weight: 200;
+        margin: 5px 0 0 0;
+    }
+    .spinner {
+        text-align: center;
+        color: #fff !important;
+        font-size: 1em;
+        letter-spacing: 1px;
+        font-weight: 300;
+        stroke: #fff !important;
+        fill: #fff !important;
+    }
+    .spinner-splash {
+        position: absolute;
+    }
+    .splash-screen {
+        position: absolute;
+        bottom: 10px;
+        color: #fff;
+        width: 90%;
+    }
+    .cartorio {
+        margin-bottom: 40px;
+    }
+    .cidade {
+        display: inline-block;
+    }
+    ion-spinner {
+        * {
+            stroke: #fff;
+        }
+
+        &.spinner-circles circle,
+        &.spinner-bubbles circle,
+        &.spinner-dots circle {
+            fill: #fff;
+        }
+    }
+}
