@@ -1,0 +1,91 @@
+<!--
+  Generated template for the EventoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Evento</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item class="list-programacao" text-wrap>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngIf="evento" class="evento" col-10>
+            <h5>{{ evento.dia }} - {{ evento.hora_inicio }} até {{ evento.hora_fim }}</h5>
+            <h3>
+                {{ evento.tipo }}: {{ evento.titulo }}
+            </h3>
+            <h6>{{ evento.local }}</h6>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button icon-only clear (click)="favorito(evento)">
+              <ion-icon name="heart-outline"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="about" col-12>
+            <b> Sobre o palestrante</b>
+            <br/><hr class="hr-white">
+            <span *ngIf="evento"> {{ evento.nome }} </span><br /><br />
+            <span *ngIf="evento"> {{ evento.sobre }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center col-12>
+            <button class="button-pergunta" ion-button>Faça uma pergunta</button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="perguntas.length">
+          <ion-col class="text-evento" col-12>
+            <span>Perguntas</span>
+            <br /><hr class="hr-black">
+          </ion-col>
+          <ion-col *ngFor="let item of perguntas" class="perguntas" col-12>
+            <div class="pergunta">
+              <ion-row class="pergunta-header">
+                <ion-col col-7>
+                  {{item.pergunta.name}}
+                </ion-col>
+                <ion-col col-5 text-right>
+                  {{item.pergunta.data_pergunta}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="pergunta-text" col-10>
+                  {{item.pergunta.pergunta}}
+                </ion-col>
+                <ion-col col-2 text-right>
+                  <ion-icon name="undo"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div *ngFor="let resposta of item.respostas" class="resposta">
+              <ion-row class="resposta-header">
+                <ion-col col-7>
+                  {{resposta.name}}
+                </ion-col>
+                <ion-col col-5 text-right>
+                  {{resposta.data_resposta}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="resposta-text" col-12>
+                  {{resposta.resposta}}
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>
