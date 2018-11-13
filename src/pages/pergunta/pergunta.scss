@@ -1,0 +1,94 @@
+page-pergunta {
+    button {
+        color: #042C41 !important;
+    }
+    
+    textarea {
+        border: 1px solid #d3d3d3 !important;
+        font-size: 14px !important;
+        padding: 10px !important;
+        border-radius: 10px !important;
+    }
+
+    .list {
+        margin: 0 !important;
+    }
+
+    .button {
+        border-color: transparent;
+        background-color: #f8f8f8;
+        color: #444;
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        padding: 0 12px;
+        min-width: 52px;
+        min-height: 47px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        vertical-align: top;
+        text-align: center;
+        text-overflow: ellipsis;
+        font-size: 16px;
+        line-height: 42px;
+        cursor: pointer
+    }
+    
+    .button:hover {
+        color: #444;
+        text-decoration: none
+    }
+    
+    .button.activated,
+    .button.active {
+        border-color: #a2a2a2;
+        background-color: #e5e5e5
+    }
+    
+    .button:after {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        bottom: -6px;
+        left: -6px;
+        content: ' '
+    }
+    
+    .button-outline {
+        -webkit-transition: opacity .1s;
+        transition: opacity .1s;
+        background: 0 0;
+        box-shadow: none;
+        font-size: 11pt;
+        border-radius: 50px;
+        min-width: 100px;
+    }
+    
+    .button.disabled,
+    .button[disabled] {
+        opacity: .4;
+        cursor: default!important;
+        pointer-events: none
+    }
+    
+    .button-royal {
+        background-color: #042C41!important;
+        color: #FFF!important;
+        border: none!important;
+        box-shadow: 0 8px 18px 0 rgba(51,58,69,.15);
+    }
+    
+    .button.button-light.button-outline {
+        border-color: #ddd;
+        background: 0 0;
+        color: #ddd
+    }
+    
+    .button.button-light.button-outline.activated,
+    .button.button-light.button-outline.active {
+        background-color: #ddd;
+        box-shadow: none;
+        color: #fff
+    }
+}
