@@ -1,0 +1,67 @@
+<!--
+  Generated template for the VotarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Votação</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-item *ngIf="evento" class="list-programacao" text-wrap>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="evento" col-10>
+          <h5>{{ evento.dia }} - {{ evento.hora_inicio }} até {{ evento.hora_fim }}</h5>
+          <h3>
+              {{ evento.tipo }}: {{ evento.titulo }}
+          </h3>
+          <h6>{{ evento.local }}</h6>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="text-evento" col-12>
+          <span>Conclusão</span>
+          <br /><hr class="hr-black">
+          <br />
+          {{ evento.conclusao }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="text-evento" col-12>
+          <span>Seu voto</span>
+          <br /><hr class="hr-black">
+        </ion-col>
+      </ion-row>
+      <ion-row text-center>
+        <ion-col col-6>
+          <label class="container">Não
+            <input type="radio" [value]="0" [(ngModel)]="voto">
+            <span class="checkmark"></span>
+          </label>
+        </ion-col>
+        <ion-col col-6>
+          <label class="container">Sim
+            <input type="radio" [value]="1" [(ngModel)]="voto">
+            <span class="checkmark"></span>
+          </label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 text-center>
+            <button ion-button 
+            [disabled]="voto === null" 
+            [class.button-royal]="voto !== null"
+            class="submit-btn" (click)="send(voto)" type="submit">Enviar
+            </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-content>

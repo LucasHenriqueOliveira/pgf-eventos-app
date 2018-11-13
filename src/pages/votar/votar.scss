@@ -1,0 +1,155 @@
+page-votar {
+    button {
+        color: #042C41 !important;
+    }
+
+    h5, h6 {
+        font-style: italic;
+    }
+
+    h3 {
+        font-weight: 700 !important;
+    }
+
+    .hr-black {
+        background-color: #949393 !important;
+        height: 1px !important;
+    }
+
+    .evento {
+        padding-left: 15px;
+    }
+
+    .text-evento {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 0;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    .item-inner {
+        border: none !important;
+    }
+
+    /* Customize the label (the container) */
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 700;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* Hide the browser's default radio button */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: -1px;
+        left: 30px;
+        height: 20px;
+        width: 20px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+    
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+    
+    /* When the radio button is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: #042C41;
+    }
+    
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+    
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+    
+    .button {
+        border-color: transparent;
+        background-color: #ccc;
+        color: #444;
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        vertical-align: top;
+        text-align: center;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        line-height: 42px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+    
+    .button-outline {
+        -webkit-transition: opacity .1s;
+        transition: opacity .1s;
+        background: 0 0;
+        box-shadow: none;
+        font-size: 11pt;
+        border-radius: 50px;
+        min-width: 100px;
+    }
+    
+    .button.disabled,
+    .button[disabled] {
+        opacity: .4;
+        cursor: default!important;
+        pointer-events: none
+    }
+    
+    .button-royal {
+        background-color: #042C41!important;
+        color: #FFF!important;
+        border: none!important;
+    }
+    
+    .button.button-light.button-outline {
+        border-color: #ccc;
+        background: 0 0;
+        color: #ccc;
+    }
+    
+    .button.button-light.button-outline.activated,
+    .button.button-light.button-outline.active {
+        background-color: #ddd;
+        box-shadow: none;
+        color: #fff
+    }
+}
