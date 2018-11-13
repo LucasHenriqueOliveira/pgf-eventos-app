@@ -7,12 +7,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cadastro</ion-title>
+    <ion-title>Cadastro</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <form [formGroup]="formSignUp" novalidate>
+    <ion-item class="item-input input-control">
+      <ion-input type="text" formControlName="name" placeholder="Nome Completo"></ion-input>
+    </ion-item>
+    <ion-item class="item-input input-control">
+      <ion-input type="text" formControlName="email" placeholder="E-mail"></ion-input>
+    </ion-item>
+    <ion-item class="item-input input-control">
+      <ion-input type="password" formControlName="password" placeholder="Senha"></ion-input>
+    </ion-item>
+    <ion-item class="item-input input-control">
+      <ion-input type="password" formControlName="password_confirmation" placeholder="Confirmar a senha"></ion-input>
+    </ion-item>
 
+    <div class="pull-right clearfix">
+      <button class="button button-outline button-light item-icon-right" 
+          (click)="signup(formSignUp.value)"
+          [disabled]="!formSignUp.valid"
+          [class.button-royal]="formSignUp.valid">
+      Cadastrar
+      </button>
+    </div>
+  </form>
 </ion-content>
