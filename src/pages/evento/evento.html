@@ -18,17 +18,23 @@
     <ion-item class="list-programacao" text-wrap>
       <ion-grid>
         <ion-row>
-          <ion-col *ngIf="evento" class="evento" col-10>
+          <ion-col *ngIf="evento" class="evento" col-12>
             <h5>{{ evento.dia }} - {{ evento.hora_inicio }} até {{ evento.hora_fim }}</h5>
             <h3>
                 {{ evento.tipo }}: {{ evento.titulo }}
             </h3>
             <h6>{{ evento.local }}</h6>
+            <h6 *ngIf="tipo === 'Oficina'">{{ evento.vagas }} vagas</h6>
+            <span class="esgotado" *ngIf="!vagas_restantes && tipo === 'Oficina'">Esgotado!</span>
           </ion-col>
-          <ion-col col-2>
-            <button ion-button icon-only clear (click)="favorito(evento)">
-              <ion-icon name="heart-outline"></ion-icon>
-            </button>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center col-6>
+            <button class="button-pergunta btn-block" (click)="verDocumento()" ion-button>Veja a apresentação</button>
+          </ion-col>
+          <ion-col text-center col-6>
+            <button class="button-pergunta btn-block" *ngIf="checkButton('inscrever')" [disabled]="checkDisable()" (click)="inscricao()" ion-button>Fazer inscrição</button>
+            <button class="button-pergunta btn-block" *ngIf="checkButton('remover')" [disabled]="checkDisable()" (click)="removeInscricao()" ion-button>Cancelar inscrição</button>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -41,7 +47,7 @@
         </ion-row>
         <ion-row>
           <ion-col text-center col-12>
-            <button class="button-pergunta" ion-button>Faça uma pergunta</button>
+            <button class="button-pergunta" (click)="openModalPergunta()" ion-button>Faça uma pergunta</button>
           </ion-col>
         </ion-row>
         <ion-row *ngIf="perguntas.length">
@@ -64,7 +70,7 @@
                   {{item.pergunta.pergunta}}
                 </ion-col>
                 <ion-col col-2 text-right>
-                  <ion-icon name="undo"></ion-icon>
+                  <ion-icon name="undo" (click)="openModalResposta(item.pergunta.id)"></ion-icon>
                 </ion-col>
               </ion-row>
             </div>

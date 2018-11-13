@@ -85,8 +85,13 @@ page-evento {
     }
 
     .button-pergunta {
-        background-color: #042C41;
-        color: #d3d3d3 !important;
+        background-color: #bdbdbd;
+        color: #042C41 !important;
         font-size: 14px;
+    }
+
+    .esgotado {
+        font-size: 14px;
+        color: red;
     }
 }
