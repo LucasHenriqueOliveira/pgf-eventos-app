@@ -30,7 +30,7 @@
 
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="opcao !== 'favoritos'">
     <div *ngFor="let item of arrItems">
       <ion-label class="date">{{ item.data }}</ion-label>
       <ion-item *ngFor="let programacao of item.programacao" class="list-programacao" text-wrap>
@@ -47,12 +47,32 @@
             </ion-col>
             <ion-col col-2>
               <button ion-button icon-only clear (click)="favorito(programacao)">
-                <ion-icon name="heart-outline"></ion-icon>
+                <ion-icon [name]="checkFavorito(programacao.id)"></ion-icon>
               </button>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
     </div>
+  </ion-list>
+  <ion-list *ngIf="opcao === 'favoritos'">
+    <ion-item *ngFor="let item of arrFavoritos" class="list-programacao" text-wrap>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="evento" (click)="getEvento(item)" col-10>
+            <h5>{{ item.dia }} - {{ item.hora_inicio }} até {{ item.hora_fim }}</h5>
+            <h3>
+                {{ item.tipo }}: {{ item.titulo }}
+            </h3>
+            <h6>{{ item.local }}</h6>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button icon-only clear (click)="favorito(item)">
+              <ion-icon [name]="checkFavorito(item.id)" name="heart-outline"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
   </ion-list>
 </ion-content>
