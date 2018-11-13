@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { PalestrantePage } from '../../pages/palestrante/palestrante';
 
@@ -21,17 +21,23 @@ export class PalestrantesPage {
   items: any;
   arrItems: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private Data: DataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private Data: DataProvider,
+    public loadingCtrl: LoadingController) {
     this.initializeItems();
   }
 
   initializeItems() {
+    let loader = this.loadingCtrl.create({content: "Aguarde..."});
+    loader.present();
+
     this.Data.getPalestrantes().subscribe(
       result => {
         this.items = result;
         this.arrItems = this.items;
+        loader.dismiss();
       },
       error => {
+        loader.dismiss();
         // this.loading = false;
         // this.notify.error('Erro ao retornar o status', {timeout: 3000, showProgressBar: false });
       }
