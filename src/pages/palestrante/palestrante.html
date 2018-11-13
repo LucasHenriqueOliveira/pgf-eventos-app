@@ -32,7 +32,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row *ngIf="programacao.length">
       <ion-col class="text-evento" col-12>
         <span> Eventos</span>
         <br /><hr class="hr-black">
@@ -51,7 +51,7 @@
                 </ion-col>
                 <ion-col col-2>
                   <button ion-button icon-only clear (click)="favorito(item)">
-                    <ion-icon name="heart-outline"></ion-icon>
+                    <ion-icon [name]="checkFavorito(item.id)" name="heart-outline"></ion-icon>
                   </button>
                 </ion-col>
               </ion-row>
