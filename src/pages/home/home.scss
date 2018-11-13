@@ -1,5 +1,5 @@
 page-home {
-    .button {
+    .more {
         border-color: transparent;
         background-color: #f8f8f8;
         color: #444;
@@ -21,18 +21,18 @@ page-home {
         box-shadow: none;
     }
     
-    .button:hover {
+    .more:hover {
         color: #444;
         text-decoration: none
     }
     
-    .button.activated,
-    .button.active {
+    .more.activated,
+    .more.active {
         border-color: #a2a2a2;
         background-color: #e5e5e5
     }
     
-    .button:after {
+    .more:after {
         position: absolute;
         top: -6px;
         right: -6px;
@@ -41,18 +41,8 @@ page-home {
         content: ' '
     }
     
-    .button-outline {
-        -webkit-transition: opacity .1s;
-        transition: opacity .1s;
-        background: 0 0;
-        box-shadow: none;
-        font-size: 11pt;
-        border-radius: 50px;
-        min-width: 100px;
-    }
-    
-    .button.disabled,
-    .button[disabled] {
+    .more.disabled,
+    .more[disabled] {
         opacity: .4;
         cursor: default!important;
         pointer-events: none
@@ -62,8 +52,8 @@ page-home {
         margin-top: 20px;
     }
 
-    .registry-header .menu-button button,
-    .registry-header button {
+    .registry-header .menu-button .more,
+    .registry-header .more {
         margin-top: 11px;
         font-size: 15px
     }
@@ -985,5 +975,19 @@ page-home {
 
     .sem_historico {
         margin: 0 0 30px 10px;
+    }
+
+    .button-home {
+        height: 90px !important;
+        background-color: #042C41;
+    }
+
+    .button-home:focus {
+        height: 90px !important;
+        background-color: #042C41;
+    }
+
+    .button-icon {
+        font-size: 40px !important;
     }
 }
