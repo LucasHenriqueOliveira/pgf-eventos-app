@@ -19,6 +19,7 @@ export class VotacaoPage {
 
   user: any;
   arrOficinas: any = [];
+  oficinas: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private Data: DataProvider,
     public loadingCtrl: LoadingController, public events: Events) {
@@ -51,6 +52,7 @@ export class VotacaoPage {
     this.Data.getVotacao(this.user.id).subscribe(
       result => {
         this.arrOficinas = result;
+        this.oficinas = result['oficinas'];
         loader.dismiss();
       },
       error => {

@@ -38,5 +38,8 @@
         </ion-row>
       </ion-grid>
     </ion-item>
+    <ion-item *ngIf="!oficinas.length" text-wrap>
+      <p>Não existem oficinas concluídas para votação!</p>
+    </ion-item>
   </ion-list>
 </ion-content>
