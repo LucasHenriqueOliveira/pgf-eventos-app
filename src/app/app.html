@@ -2,7 +2,8 @@
 
   <ion-content class="menu">
     <div class="menu-header">
-      <h1>Procuradoria Federal</h1>
+      <h1>Procuradoria Federal Especializada</h1>
+      <span class="orgao">INSS</span>
     </div>
     <ion-list class="list-menu">
       <button menuClose ion-item (click)="openPage('programacao')">
@@ -24,7 +25,7 @@
       <ion-toolbar>
         <ion-grid>
           <ion-row>
-            <ion-col col-10>
+            <ion-col (click)="logout()" col-10>
               <span>Sair</span>
             </ion-col>
             <ion-col col-2 text-right>
