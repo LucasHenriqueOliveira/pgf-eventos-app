@@ -1,14 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, App, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { ProgramacaoPage } from '../pages/programacao/programacao';
 import { PalestrantesPage } from '../pages/palestrantes/palestrantes';
 import { InscricaoPage } from '../pages/inscricao/inscricao';
 import { VotacaoPage } from '../pages/votacao/votacao';
 import { AppVersion } from '@ionic-native/app-version';
+import { LoginPage } from '../pages/login/login';
+import { DataProvider } from '../providers/data/data';
+import { IntroPage } from '../pages/intro/intro';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,10 +18,12 @@ import { AppVersion } from '@ionic-native/app-version';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = IntroPage;
   version: string;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private appVersion: AppVersion) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
+    private appVersion: AppVersion, private Data: DataProvider, public appCtrl: App,
+    public menuCtrl: MenuController) {
     this.initializeApp();
     if(this.platform.is('cordova')) {
       this.appVersion.getVersionNumber().then((version) => {
@@ -38,6 +42,12 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
+
+  logout() {
+    this.Data.clearStorage();
+    this.menuCtrl.close();
+		this.appCtrl.getRootNav().setRoot(LoginPage);
+	}
 
   openPage(page) {
 		switch (page) {
