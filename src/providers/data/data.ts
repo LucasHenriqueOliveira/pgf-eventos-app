@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/from';
 
 /*
   Generated class for the DataProvider provider.
@@ -36,6 +39,16 @@ export class DataProvider {
     return this.http.post(`${this.api}/login`, JSON.stringify(login), {headers: options});
   }
 
+  esqueceuSenha(data) {
+		let options = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.post(`${this.api}/user/reset`, JSON.stringify(data), {headers: options});
+  }
+
+  signup(signup) {
+    let options = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.post(`${this.api}/signup`, JSON.stringify(signup), {headers: options});
+  }
+
   getUser(id) {
     let options = new HttpHeaders();
     options.set('Authorization','Bearer ' + this.getToken());
@@ -43,9 +56,64 @@ export class DataProvider {
     return this.http.get(`${this.api}/user/${id}`, {headers: options});
   }
 
+  inscricao(data) {
+    let options = new HttpHeaders();
+    options.set('Authorization','Bearer ' + this.getToken());
+    options.set('Content-Type', 'application/json');
+    return this.http.post(`${this.api}/inscricao`, data, {headers: options});
+  }
+
+  cancelarInscricao(data) {
+    let options = new HttpHeaders();
+    options.set('Authorization','Bearer ' + this.getToken());
+    options.set('Content-Type', 'application/json');
+    return this.http.post(`${this.api}/inscricao-cancelar`, data, {headers: options});
+  }
+
+  perguntar(data) {
+    let options = new HttpHeaders();
+    options.set('Authorization','Bearer ' + this.getToken());
+    options.set('Content-Type', 'application/json');
+    return this.http.post(`${this.api}/pergunta`, data, {headers: options});
+  }
+
+  responder(data) {
+    let options = new HttpHeaders();
+    options.set('Authorization','Bearer ' + this.getToken());
+    options.set('Content-Type', 'application/json');
+    return this.http.post(`${this.api}/resposta`, data, {headers: options});
+  }
+
+  getVotacao(id) {
+    let options = new HttpHeaders();
+    options.set('Authorization','Bearer ' + this.getToken());
+    options.set('Content-Type', 'application/json');
+    return this.http.get(`${this.api}/votacao/${id}`, {headers: options});
+  }
+
+  getVotacaoDetalhada(id, id_user) {
+    let options = new HttpHeaders();
+    options.set('Authorization','Bearer ' + this.getToken());
+    options.set('Content-Type', 'application/json');
+    return this.http.get(`${this.api}/votacao-detalhada/${id}/${id_user}`, {headers: options});
+  }
+
+  saveVoto(data) {
+    let options = new HttpHeaders();
+    options.set('Authorization','Bearer ' + this.getToken());
+    options.set('Content-Type', 'application/json');
+    return this.http.post(`${this.api}/voto`, data, {headers: options});
+  }
+
+  getUserData(): Observable<string> {
+		return Observable.fromPromise(this.getUserLocal()).map(user => {
+			return user;
+		});		
+	}
+
   getUserLocal() {
-    return this.storage.get('user').then((token) => {
-			return token;
+    return this.storage.get('user').then((user) => {
+			return user;
 		});
   }
 
