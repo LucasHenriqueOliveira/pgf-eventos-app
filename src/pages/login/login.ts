@@ -129,7 +129,7 @@ export class LoginPage {
 				  }, err => {
 					loader.dismiss();
 					let toast = this.toastCtrl.create({
-						message: 'Erro ao recuperar a senha do usuário!',
+						message: err.error.error,
 						duration: 3000,
 						position: 'middle',
 						cssClass: 'toast-error'
