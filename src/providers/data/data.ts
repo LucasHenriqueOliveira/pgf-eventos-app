@@ -41,7 +41,7 @@ export class DataProvider {
 
   esqueceuSenha(data) {
 		let options = new HttpHeaders({ 'Content-Type': 'application/json' });  
-    return this.http.post(`${this.api}/user/reset`, JSON.stringify(data), {headers: options});
+    return this.http.post(`${this.api}/reset`, JSON.stringify(data), {headers: options});
   }
 
   signup(signup) {
