@@ -47,4 +47,8 @@ page-programacao {
     h3 {
         font-weight: 700 !important;
     }
+
+    .segment-ios-secondary .segment-button:hover:not(.segment-activated) {
+        background-color: transparent !important;
+    }
 }

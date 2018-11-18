@@ -133,6 +133,7 @@ export class ProgramacaoPage {
 
   favorito(result) {
     let programacao = [];
+    
     if (this.favoritos && this.favoritos.hasOwnProperty("programacao")) {
       programacao = this.favoritos.programacao;
     }
@@ -159,7 +160,9 @@ export class ProgramacaoPage {
       user: this.user.id,
       programacao: programacao
     }
+
     localStorage.setItem('favoritos', JSON.stringify(data));
+    this.favoritos = data;
   }
 
   getEvento(programacao) {
