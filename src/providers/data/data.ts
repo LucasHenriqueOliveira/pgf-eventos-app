@@ -14,7 +14,7 @@ import 'rxjs/add/observable/from';
 @Injectable()
 export class DataProvider {
 
-  api = 'http://localhost:8000/api';
+  api = 'https://pfe-eventos.herokuapp.com/api';
 
   constructor(public http: HttpClient, private storage: Storage) {}
 
