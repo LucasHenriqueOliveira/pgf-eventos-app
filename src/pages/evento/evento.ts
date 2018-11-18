@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { DataProvider } from '../../providers/data/data';
 import { Storage } from '@ionic/storage';
 import { PerguntaPage } from '../pergunta/pergunta';
+import { DocumentoPage } from '../documento/documento';
 
 /**
  * Generated class for the EventoPage page.
@@ -21,6 +22,7 @@ export class EventoPage {
   id: any;
   item: any;
   evento: any;
+  documento: any;
   user: any;
   programacao: any;
   tipo: any;
@@ -47,12 +49,17 @@ export class EventoPage {
   }
 
   ionViewDidLoad() {
+    let loader = this.loadingCtrl.create({content: "Aguarde..."});
+    loader.present();
+
     this.Data.getEvento(this.id).subscribe(
       result => {
         this.item = result;
         this.setData(this.item);
+        loader.dismiss();
       },
       error => {
+        loader.dismiss();
         // this.loading = false;
         // this.notify.error('Erro ao retornar o status', {timeout: 3000, showProgressBar: false });
       }
@@ -63,6 +70,7 @@ export class EventoPage {
     this.evento = result.evento;
     this.tipo = result.evento.tipo;
     this.perguntas = result.perguntas;
+    this.documento = this.evento.documento;
     this.vagas_restantes = result.evento.vagas - result.evento.inscritos;
   }
 
@@ -284,6 +292,22 @@ export class EventoPage {
           }
         );
       }
+    });
+  }
+
+  checkDisableDocumento() {
+    if (!this.documento) {
+      return true;
+    }
+    return false;
+  }
+
+  verDocumento() {
+    let documentoModal = this.modalCtrl.create(DocumentoPage, { documento: this.documento });
+    documentoModal.present();
+
+    documentoModal.onDidDismiss(result => {  
+      console.log(result);
     });
   }
 }

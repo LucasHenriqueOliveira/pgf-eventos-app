@@ -30,7 +30,7 @@
         </ion-row>
         <ion-row>
           <ion-col text-center col-6>
-            <button class="button-pergunta btn-block" (click)="verDocumento()" ion-button>Veja a apresentação</button>
+            <button class="button-pergunta btn-block" (click)="verDocumento()" [disabled]="checkDisableDocumento()" ion-button>Veja a apresentação</button>
           </ion-col>
           <ion-col text-center col-6>
             <button class="button-pergunta btn-block" *ngIf="checkButton('inscrever')" [disabled]="checkDisable()" (click)="inscricao()" ion-button>Fazer inscrição</button>

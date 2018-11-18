@@ -22,6 +22,10 @@ import { IntroPage } from '../pages/intro/intro';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PerguntaPage } from '../pages/pergunta/pergunta';
 import { VotarPage } from '../pages/votar/votar';
+import { DocumentoPage } from '../pages/documento/documento';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { DocumentViewer } from '@ionic-native/document-viewer';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { VotarPage } from '../pages/votar/votar';
     IntroPage,
     CadastroPage,
     PerguntaPage,
-    VotarPage
+    VotarPage,
+    DocumentoPage
   ],
   imports: [
     BrowserModule,
@@ -63,14 +68,18 @@ import { VotarPage } from '../pages/votar/votar';
     IntroPage,
     CadastroPage,
     PerguntaPage,
-    VotarPage
+    VotarPage,
+    DocumentoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
-    AppVersion
+    AppVersion,
+    File,
+    FileTransfer,
+    DocumentViewer
   ]
 })
 export class AppModule {}
