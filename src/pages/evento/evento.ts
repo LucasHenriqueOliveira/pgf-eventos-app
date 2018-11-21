@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { DataProvider } from '../../providers/data/data';
 import { Storage } from '@ionic/storage';
 import { PerguntaPage } from '../pergunta/pergunta';
-import { DocumentoPage } from '../documento/documento';
+import { DocumentViewer } from '@ionic-native/document-viewer';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 /**
  * Generated class for the EventoPage page.
@@ -32,7 +34,8 @@ export class EventoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private Data: DataProvider,
     private storage: Storage, public loadingCtrl: LoadingController, private toastCtrl: ToastController,
-    private alertCtrl: AlertController, public modalCtrl: ModalController) {
+    private alertCtrl: AlertController, public modalCtrl: ModalController, private document: DocumentViewer,
+    private file: File, private transfer: FileTransfer) {
     this.id = navParams.get('id');
 
     let promise = this.Data.getUserLocal();
@@ -303,11 +306,17 @@ export class EventoPage {
   }
 
   verDocumento() {
-    let documentoModal = this.modalCtrl.create(DocumentoPage, { documento: this.documento });
-    documentoModal.present();
+    let documento = 'https://pfe-eventos.herokuapp.com/files/' + this.documento;
 
-    documentoModal.onDidDismiss(result => {  
-      console.log(result);
-    });
+    const transfer: FileTransferObject = this.transfer.create();
+    let loader = this.loadingCtrl.create({content: "Aguarde o download..."});
+    loader.present();
+    transfer.download(documento, this.file.dataDirectory + 'my_file.pdf')
+      .then(entry => {
+        let url = entry.nativeURL;
+        url = url.split("//");
+        loader.dismiss();
+        this.document.viewDocument(url[1], 'application/pdf', {});
+      });
   }
 }
