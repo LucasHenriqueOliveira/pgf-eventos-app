@@ -22,7 +22,6 @@ import { IntroPage } from '../pages/intro/intro';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PerguntaPage } from '../pages/pergunta/pergunta';
 import { VotarPage } from '../pages/votar/votar';
-import { DocumentoPage } from '../pages/documento/documento';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DocumentViewer } from '@ionic-native/document-viewer';
@@ -41,8 +40,7 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
     IntroPage,
     CadastroPage,
     PerguntaPage,
-    VotarPage,
-    DocumentoPage
+    VotarPage
   ],
   imports: [
     BrowserModule,
@@ -68,8 +66,7 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
     IntroPage,
     CadastroPage,
     PerguntaPage,
-    VotarPage,
-    DocumentoPage
+    VotarPage
   ],
   providers: [
     StatusBar,
