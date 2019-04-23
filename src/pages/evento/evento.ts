@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController, ModalController, normalizeURL } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { Storage } from '@ionic/storage';
 import { PerguntaPage } from '../pergunta/pergunta';
@@ -313,10 +313,12 @@ export class EventoPage {
     loader.present();
     transfer.download(documento, this.file.dataDirectory + 'my_file.pdf')
       .then(entry => {
-        let url = entry.nativeURL;
-        url = url.split("//");
+        let url = normalizeURL(entry.nativeURL);
+        let uri = url.split("//");
+        alert(uri[1]);
         loader.dismiss();
-        this.document.viewDocument(url[1], 'application/pdf', {});
+        this.document.viewDocument(url, 'application/pdf', {}, function(){}, function(){}, function(){},
+        function(error){ alert(JSON.stringify(error))});
       });
   }
 }

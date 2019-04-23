@@ -15,7 +15,7 @@ import 'rxjs/add/observable/from';
 export class DataProvider {
 
   api = 'https://pfe-eventos.herokuapp.com/api';
-
+  
   constructor(public http: HttpClient, private storage: Storage) {}
 
   getProgramacao() {
