@@ -1,8 +1,7 @@
 {
-  "name": "pfeEventos",
-  "app_id": "",
-  "type": "ionic-angular",
+  "name": "pgfEventos",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular"
 }
