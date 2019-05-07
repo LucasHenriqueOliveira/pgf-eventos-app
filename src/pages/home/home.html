@@ -7,10 +7,13 @@
     </div>
     <div class="pull-left">
         <h1>Olá {{ name }},</h1>
-        <h4>Seja bem-vindo ao evento</h4>
+        <h4>Seja bem-vindo a</h4>
     </div>
     <div class="div-evento" text-center>
-      <img class="image-evento" src="assets/imgs/evento.png" />
+      <img class="image-evento" src="assets/imgs/evento2.png" />
+    </div>
+    <div class="div-text-evento" text-center>
+      Reunião Conjunta <br/>Fórum dos Procuradores-Chefes do Consultivo
     </div>
     <ion-grid>
       <ion-row>
@@ -40,13 +43,21 @@
           <button (click)="openPage('inscricao')" class="button-home" ion-button block>
             <div>
               <div>
-                <ion-icon class="button-icon" name="checkmark"></ion-icon>
+                <ion-icon class="button-icon" name="contact"></ion-icon>
               </div>
-              <label>Inscritos</label>
+              <label>Participantes</label>
             </div>
           </button>
         </ion-col>
         <ion-col col-6>
+          <button (click)="openPage('avisos')" class="button-home" ion-button block>
+            <div>
+              <div>
+                <ion-icon class="button-icon" name="list-box"></ion-icon>
+              </div>
+              <label>Avisos</label>
+            </div>
+          </button>
           <!--
           <button (click)="openPage('votacao')" class="button-home" ion-button block>
             <div>

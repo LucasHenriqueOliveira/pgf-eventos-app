@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Votação</ion-title>
+    <ion-title>Avisos</ion-title>
     <ion-buttons end>
       <button (click)="getUser()" clear>
         <ion-icon name="refresh"></ion-icon>
@@ -39,7 +39,7 @@
       </ion-grid>
     </ion-item>
     <ion-item *ngIf="!oficinas.length" text-wrap>
-      <p>Não existem oficinas concluídas para votação!</p>
+      <p>Não existem avisos publicados!</p>
     </ion-item>
   </ion-list>
 </ion-content>

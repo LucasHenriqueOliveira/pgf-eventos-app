@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProgramacaoPage } from '../pages/programacao/programacao';
 import { PalestrantesPage } from '../pages/palestrantes/palestrantes';
 import { InscricaoPage } from '../pages/inscricao/inscricao';
+import { InscritoPage } from '../pages/inscrito/inscrito';
 import { VotacaoPage } from '../pages/votacao/votacao';
 import { LoginPage } from '../pages/login/login';
 import { DataProvider } from '../providers/data/data';
@@ -25,6 +26,7 @@ import { VotarPage } from '../pages/votar/votar';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DocumentViewer } from '@ionic-native/document-viewer';
+import { AvisosPage } from '../pages/avisos/avisos';
 
 @NgModule({
   declarations: [
@@ -35,12 +37,14 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
     PalestrantesPage,
     PalestrantePage,
     InscricaoPage,
+    InscritoPage,
     VotacaoPage,
     EventoPage,
     IntroPage,
     CadastroPage,
     PerguntaPage,
-    VotarPage
+    VotarPage,
+    AvisosPage
   ],
   imports: [
     BrowserModule,
@@ -61,12 +65,14 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
     PalestrantesPage,
     PalestrantePage,
     InscricaoPage,
+    InscritoPage,
     VotacaoPage,
     EventoPage,
     IntroPage,
     CadastroPage,
     PerguntaPage,
-    VotarPage
+    VotarPage,
+    AvisosPage
   ],
   providers: [
     StatusBar,

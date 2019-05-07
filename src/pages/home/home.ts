@@ -4,7 +4,7 @@ import { DataProvider } from '../../providers/data/data';
 import { ProgramacaoPage } from '../programacao/programacao';
 import { PalestrantesPage } from '../palestrantes/palestrantes';
 import { InscricaoPage } from '../inscricao/inscricao';
-import { VotacaoPage } from '../votacao/votacao';
+import { AvisosPage } from '../avisos/avisos';
 
 @Component({
   selector: 'page-home',
@@ -42,8 +42,8 @@ export class HomePage {
 			case 'inscricao':
 				this.navCtrl.push(InscricaoPage);
         break;
-      case 'votacao':
-				this.navCtrl.push(VotacaoPage);
+      case 'avisos':
+				this.navCtrl.push(AvisosPage);
 				break;
 		}
   }

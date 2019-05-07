@@ -328,11 +328,21 @@ page-home {
 
     .div-evento {
         width: 100%;
+        display: inline-block;
+    }
+
+    .div-text-evento {
+        width: 100%;
+        display: inline-block;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        color: #1f68ae;
     }
 
     .image-evento {
-        width: 170px;
+        width: 250px;
         margin-top: 10px;
-        margin-bottom: 10px;
     }
 }

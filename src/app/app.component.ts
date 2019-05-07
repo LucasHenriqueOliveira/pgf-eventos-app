@@ -6,11 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProgramacaoPage } from '../pages/programacao/programacao';
 import { PalestrantesPage } from '../pages/palestrantes/palestrantes';
 import { InscricaoPage } from '../pages/inscricao/inscricao';
-import { VotacaoPage } from '../pages/votacao/votacao';
 import { AppVersion } from '@ionic-native/app-version';
 import { LoginPage } from '../pages/login/login';
 import { DataProvider } from '../providers/data/data';
 import { IntroPage } from '../pages/intro/intro';
+import { AvisosPage } from '../pages/avisos/avisos';
 
 @Component({
   templateUrl: 'app.html'
@@ -60,8 +60,8 @@ export class MyApp {
 			case 'inscricao':
 				this.nav.push(InscricaoPage);
         break;
-      case 'votacao':
-				this.nav.push(VotacaoPage);
+      case 'avisos':
+				this.nav.push(AvisosPage);
 				break;
 		}
 	}

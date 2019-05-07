@@ -7,35 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Inscrição</ion-title>
+    <ion-title>Participantes</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Pesquisar"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of programacao" class="list-programacao" text-wrap>
+    <ion-item (click)="getParticipante(item)" *ngFor="let item of items" class="list-palestrantes">
       <ion-grid>
         <ion-row>
-          <ion-col class="evento" (click)="getProgramacao(item)" col-10>
-            <h5>{{ item.dia }} - {{ item.hora_inicio }} até {{ item.hora_fim }}</h5>
-            <h3>
-                {{ item.tipo }}: {{ item.titulo }}
-            </h3>
-            <h6>{{ item.local }}</h6>
-          </ion-col>
           <ion-col col-2>
-            <button ion-button icon-only clear (click)="removeInscricao(item)">
-              <ion-icon name="trash"></ion-icon>
-            </button>
+            <img src="assets/imgs/user.svg" width="40px">
+          </ion-col>
+          <ion-col col-9 class="list-palestrante">
+            {{ item.name }}
+          </ion-col>
+          <ion-col col-1 class="list-palestrante-arrow">
+            <ion-icon name="ios-arrow-forward"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
-    <div text-center *ngIf="!programacao.length">
-      <p>Você ainda não se inscreveu para as oficinas!</p>
-      <button class="button-pergunta" (click)="goProgramacao()" ion-button>Veja a programação</button>
-    </div>
   </ion-list>
 </ion-content>

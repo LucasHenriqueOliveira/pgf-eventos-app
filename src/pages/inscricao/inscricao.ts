@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { EventoPage } from '../evento/evento';
-import { ProgramacaoPage } from '../programacao/programacao';
-import { Storage } from '@ionic/storage';
+import { InscritoPage } from '../../pages/inscrito/inscrito';
 
 /**
  * Generated class for the InscricaoPage page.
@@ -19,92 +17,58 @@ import { Storage } from '@ionic/storage';
 })
 export class InscricaoPage {
   
-  programacao: any = [];
-  user: any;
+  searchQuery: string = '';
+  items: any;
+  arrItems: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private Data: DataProvider,
-    private storage: Storage, public loadingCtrl: LoadingController, private toastCtrl: ToastController,
-    private alertCtrl: AlertController) {
+    public loadingCtrl: LoadingController) {
+    this.initializeItems();
   }
 
-  ionViewDidLoad() {
-    let promise = this.Data.getInscricaoLocal();
+  initializeItems() {
+    let loader = this.loadingCtrl.create({content: "Aguarde..."});
+    loader.present();
 
-    Promise.all([promise]).then((res) => {
-      this.setData(res[0]);
+    this.Data.getParticipantes().subscribe(
+      result => {
+        this.items = result;
+        this.arrItems = this.items;
+        loader.dismiss();
+      },
+      error => {
+        loader.dismiss();
+        // this.loading = false;
+        // this.notify.error('Erro ao retornar o status', {timeout: 3000, showProgressBar: false });
+      }
+    );
+  }
+
+  ionViewDidLoad() {}
+
+  query = (items, filters) => {
+    return items.filter((item) => {
+      return filters.reduce((found, filter) => {
+        if (!(item[filter.key].includes(filter.value))) return false
+        return found
+      }, true)
     });
-
-    let user = this.Data.getUserLocal();
-
-    Promise.all([user]).then((res) => {
-      this.setUser(res[0]);
-    });
   }
 
-  setData(result) {
-    this.programacao = result;
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.items = this.arrItems;
+
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.items = this.query(this.items, [{key: 'name', value: val}]);
+    }
   }
 
-  setUser(user) {
-    this.user = user;
-  }
-
-  getProgramacao(programacao) {
-    this.navCtrl.push(EventoPage, {id: programacao.id});
-  }
-
-  goProgramacao() {
-    this.navCtrl.push(ProgramacaoPage);
-  }
-
-  removeInscricao(programacao) {
-    let alert = this.alertCtrl.create({
-      title: 'Cancelamento',
-      message: 'Tem certeza que deseja cancelar a inscrição?',
-      buttons: [
-        {
-          text: 'Não',
-          role: 'cancel'
-        },
-        {
-          text: 'Sim',
-          handler: () => {
-            let loader = this.loadingCtrl.create({content: "Aguarde..."});
-            loader.present();
-            
-            let data = {
-              id_programacao: programacao.id,
-              id_user: this.user.id
-            }
-
-            this.Data.cancelarInscricao(data).subscribe(
-              result => {
-                this.storage.remove('programacao');
-                this.storage.set('programacao', result['data']);
-                this.programacao = result['data'];
-                loader.dismiss();
-        
-                let toast = this.toastCtrl.create({
-                  message: result['message'],
-                  duration: 3000,
-                  position: 'middle'
-                });
-                toast.present();
-              },
-              err => {
-                loader.dismiss();
-                let toast = this.toastCtrl.create({
-                  message: err.error.error,
-                  duration: 3000,
-                  position: 'middle'
-                });
-                toast.present();
-              }
-            );
-          }
-        }
-      ]
-    });
-    alert.present();
+  getParticipante(item) {
+    this.navCtrl.push(InscritoPage, {id: item.id});
   }
 }

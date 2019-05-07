@@ -14,7 +14,8 @@ import 'rxjs/add/observable/from';
 @Injectable()
 export class DataProvider {
 
-  api = 'https://pfe-eventos.herokuapp.com/api';
+  // api = 'http://localhost:8000/api';
+  api = 'https://pgf.herokuapp.com/api';
   
   constructor(public http: HttpClient, private storage: Storage) {}
 
@@ -30,8 +31,20 @@ export class DataProvider {
     return this.http.get(`${this.api}/uso/${id}`);
   }
 
+  getParticipantes() {
+    return this.http.get(`${this.api}/participante`);
+  }
+
+  getParticipante(id) {
+    return this.http.get(`${this.api}/participante/${id}`);
+  }
+
   getEvento(id) {
     return this.http.get(`${this.api}/evento/${id}`);
+  }
+
+  getAvisos() {
+    return this.http.get(`${this.api}/avisos`);
   }
 
   login(login) {
