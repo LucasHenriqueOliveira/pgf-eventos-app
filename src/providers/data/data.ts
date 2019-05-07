@@ -15,7 +15,7 @@ import 'rxjs/add/observable/from';
 export class DataProvider {
 
   // api = 'http://localhost:8000/api';
-  api = 'https://pgf.herokuapp.com/api';
+  api = 'https://pgf-eventos.herokuapp.com/api';
   
   constructor(public http: HttpClient, private storage: Storage) {}
 
