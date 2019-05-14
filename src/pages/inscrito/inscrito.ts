@@ -22,6 +22,7 @@ export class InscritoPage {
   nome: string;
   email: string;
   telefone: string;
+  entidade: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private Data: DataProvider,
     public loadingCtrl: LoadingController) {
@@ -64,6 +65,7 @@ export class InscritoPage {
     this.nome = this.item.name;
     this.email = this.item.email;
     this.telefone = this.item.telefone;
+    this.entidade = this.item.entidade;
   }
 
 }
