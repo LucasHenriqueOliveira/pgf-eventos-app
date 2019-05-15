@@ -306,19 +306,25 @@ export class EventoPage {
   }
 
   verDocumento() {
-    let documento = 'https://pfe-eventos.herokuapp.com/files/' + this.documento;
+    let documento = 'https://pgf-eventos.herokuapp.com/files/' + this.documento;
 
-    const transfer: FileTransferObject = this.transfer.create();
+    // const transfer: FileTransferObject = this.transfer.create();
     let loader = this.loadingCtrl.create({content: "Aguarde o download..."});
     loader.present();
+
+    window.open(documento);
+    loader.dismiss();
+
+    /*
     transfer.download(documento, this.file.dataDirectory + 'my_file.pdf')
       .then(entry => {
         let url = normalizeURL(entry.nativeURL);
-        let uri = url.split("//");
-        alert(uri[1]);
+        // let uri = url.split("//");
+        // alert(uri[1]);
         loader.dismiss();
         this.document.viewDocument(url, 'application/pdf', {}, function(){}, function(){}, function(){},
         function(error){ alert(JSON.stringify(error))});
       });
+      */
   }
 }
